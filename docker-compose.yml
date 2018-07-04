@@ -1,0 +1,12 @@
+version: '2.1'
+
+services:
+  redis:
+    image: redis:4
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    command: python poc.py
+    volumes: 
+      - ./app:/usr/src/app

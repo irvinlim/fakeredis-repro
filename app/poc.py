@@ -15,15 +15,18 @@ def main():
     redis.flushall()
     fakeredis.flushall()
 
-    print '[*] FakeRedis BLPOP:'
+    print '[+] FakeRedis BLPOP:'
     now = time()
-    fakeredis.blpop('hello_world', 10)
+    popped = fakeredis.blpop('hello_world', 10)
     print '[*] Took %.2f seconds' % (time() - now)
+    print '[*] Popped value:', popped
+    print
 
-    print '[*] Redis BLPOP:'
+    print '[+] Redis BLPOP:'
     now = time()
-    redis.blpop('hello_world', 10)
+    popped = redis.blpop('hello_world', 10)
     print '[*] Took %.2f seconds' % (time() - now)
+    print '[*] Popped value:', popped
 
 
 if __name__ == '__main__':
